@@ -17,7 +17,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * Created by bfliu on 17-5-14.
+ * Created by mr_level on 17-5-14.
  */
 public class JSONReadSpeedTest {
 
@@ -55,13 +55,13 @@ public class JSONReadSpeedTest {
     }
 
     @Test
-    public void TestJackson() {
+    public void TestJackson() throws IOException {
 
         Map<String, Object> sourceMapJack = Maps.newHashMap();
 
         long start = System.currentTimeMillis();
 
-        this.readDataIntoMapFast(sourceMapJack, sourceData, "");
+        this.readDataIntoMapJack(sourceMapJack, sourceData, "");
 
         long end = System.currentTimeMillis();
 
