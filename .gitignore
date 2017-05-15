@@ -29,3 +29,6 @@ target/
 
 # Log files
 *.log
+
+#test files
+#test/

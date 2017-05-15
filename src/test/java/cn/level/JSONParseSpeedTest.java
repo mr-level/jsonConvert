@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class JSONParseSpeedTest {
 
-    final String settings = "{\"totalOrderLines\":\"entryOrder.totalOrderLines\",\"entryOrderCode\":\"entryOrder.entryOrderCode\",\"orderLines\":[{\"g2MappingName\":\"cargoList\",\"batchs\":[{\"g2MappingName\":\"batchs\",\"batchName\":\"batchName\",\"batchCode\":\"batchCode\",\"entrybatchCode\":\"=>entryOrder.entryOrderCode\",\"items\":[{\"g2MappingName\":\"items\",\"itemCode\":\"itemCode\",\"entrybatchCode\":\"=>entryOrder.entryOrderCode\"}]}],\"orderLineNo\":\"orderLineNo\",\"outBizCode\":\"outBizCode\",\"ownerCode\":\"ownerCode\"}],\"getInfo\":{\"getCompany\":\"getInfo.getCompany\"}}";
+    final String settings = "";
 
     @Test
     public void testFastJson() {
@@ -22,6 +22,7 @@ public class JSONParseSpeedTest {
 
         JSONObject jsonObject = JSONObject.parseObject(settings);
 
+        System.out.println("fastjson: " + jsonObject.toJSONString());
     }
 
     @Test
@@ -31,6 +32,8 @@ public class JSONParseSpeedTest {
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObject = jsonParser.parse(settings).getAsJsonObject();
 
+        System.out.println("gson : " + jsonObject.toString());
+
 
     }
 
@@ -39,6 +42,7 @@ public class JSONParseSpeedTest {
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(settings);
+
 
     }
 }

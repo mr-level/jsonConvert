@@ -3,9 +3,9 @@ package cn.level;
 import org.junit.Test;
 
 /**
- * Created by mr_level on 17-5-14.
+ * Created by LiuBinfeng on 2017/5/15.
  */
-public class JSONConverterTest {
+public class JSONConverterWithGsonTest {
 
     @Test
     public void testConvert() {
@@ -15,13 +15,11 @@ public class JSONConverterTest {
 
         long start = System.currentTimeMillis();
 
-        JSONConverter jsonConverter = new JSONConverter();
+        JSONConverterWithGson jsonConverter = new JSONConverterWithGson();
         String result = jsonConverter.convert(sourceData, settings);
 
         long end = System.currentTimeMillis();
-        System.out.println("fastJson expend " + (end-start) + " ms");
-        System.out.println("fastJson result: " + result);
+        System.out.println("Gson expend " + (end-start) + " ms");
+        System.out.println("Gson result: " + result);
     }
-
-
 }

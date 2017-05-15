@@ -17,7 +17,7 @@ public class JSONConverter {
     private final String parentNode = "parentNode";
 
 
-    public JSONObject convert(String sourceData, String templateData) {
+    public String convert(String sourceData, String templateData) {
 
         JSONObject sourceObj = JSONObject.parseObject(sourceData);
         JSONObject template = JSONObject.parseObject(templateData);
@@ -26,14 +26,16 @@ public class JSONConverter {
     }
 
 
-    public JSONObject convert(JSONObject source, JSONObject template) {
+    public String convert(JSONObject source, JSONObject template) {
 
         Map<String, Object> sourceMap = Maps.newHashMap();
 
         this.readDataIntoMap(sourceMap, source, "");
         JSONObject targetJSON = this.createTargetJSON(sourceMap, template, "");
 
-        return targetJSON;
+        System.out.println("sourceMap : " + JSON.toJSONString(sourceMap));
+
+        return targetJSON.toJSONString();
     }
 
     private void readDataIntoMap(Map<String, Object> sourceMap, JSONObject sourceObj, String prefiex) {
@@ -126,7 +128,7 @@ public class JSONConverter {
                         size--;
                     }
                 }
-//                System.out.println("sKey: " + sourceKey);
+                System.out.println("sKey: " + sourceKey);
 
             }
         }
@@ -217,7 +219,7 @@ public class JSONConverter {
                         }
                     }
 
-//                    System.out.println("sKey: " + sourceKey);
+                    System.out.println("sKey: " + sourceKey);
 
                 }
                 if (size == 0) {
